@@ -14,7 +14,7 @@ export const FloatingWhatsApp: React.FC<FloatingWhatsAppProps> = ({ onOpenReserv
   )}`;
 
   return (
-    <div className="fixed bottom-6 right-6 z-50 flex items-end flex-col space-y-2">
+    <div className="fixed bottom-6 left-6 z-50 flex items-start flex-col space-y-2">
       {/* Tooltip badge */}
       {showTooltip && (
         <div className="hidden sm:flex items-center space-x-2 bg-[#0F0F0F]/95 text-[#FDFBF7] px-4 py-2 rounded-xl shadow-2xl border border-[#D4AF37]/40 backdrop-blur-md text-xs animate-in fade-in slide-in-from-bottom-2 duration-300">
