@@ -40,7 +40,7 @@ export default function App() {
         <LocationSection onOpenReservation={() => setReservationOpen(true)} />
       </main>
 
-      {/* Rodapé com Assinatura da Vibe Studio */}
+      {/* Rodapé com Assinatura de Arthur Web Designer */}
       <Footer />
 
       {/* Botão Flutuante de WhatsApp Pulsante */}

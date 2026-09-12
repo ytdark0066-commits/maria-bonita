@@ -135,15 +135,31 @@ export const Footer: React.FC = () => {
           </div>
         </div>
 
-        {/* Bottom Credits with explicit Vibe Studio mention */}
+        {/* Bottom Credits with Arthur Web Designer contact */}
         <div className="pt-8 flex flex-col sm:flex-row items-center justify-between gap-4 text-xs text-zinc-500">
           <p>© 2026 Restaurante e Buteco Maria Bonita. Todos os direitos reservados.</p>
           
-          <div className="flex items-center space-x-2 text-zinc-400">
-            <span>Feito com paixão pela</span>
-            <span className="text-[#D4AF37] font-semibold tracking-wider uppercase hover:underline cursor-pointer">
-              Vibe Studio
-            </span>
+          <div className="flex flex-col items-center sm:items-start text-center sm:text-left gap-0.5">
+            <div className="flex items-center space-x-1.5 text-zinc-400">
+              <span>Desenvolvido por</span>
+              <a
+                href="https://wa.me/5587988091104?text=Ol%C3%A1%2C%20quero%20criar%20um%20web%20site"
+                target="_blank"
+                rel="noopener noreferrer"
+                className="text-[#D4AF37] font-semibold tracking-wide hover:underline hover:text-[#e5c358] transition-colors inline-flex items-center gap-1"
+                title="Conversar com Arthur Web Designer no WhatsApp"
+              >
+                <span>Arthur Web Designer</span>
+              </a>
+            </div>
+            <a
+              href="https://wa.me/5587988091104?text=Ol%C3%A1%2C%20quero%20criar%20um%20web%20site"
+              target="_blank"
+              rel="noopener noreferrer"
+              className="text-[11px] text-zinc-500 hover:text-zinc-400 transition-colors tracking-normal"
+            >
+              Contato para criação de sites
+            </a>
           </div>
 
           <button
