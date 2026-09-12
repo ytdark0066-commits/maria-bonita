@@ -10,10 +10,26 @@ export const LocationSection: React.FC<LocationSectionProps> = ({ onOpenReservat
   const [copied, setCopied] = useState(false);
   const [quickForm, setQuickForm] = useState({
     nome: '',
-    data: '',
+    dia: String(new Date().getDate()).padStart(2, '0'),
+    mes: '09',
     horario: '19:30',
     pessoas: '2',
   });
+
+  const meses = [
+    { value: '01', label: 'Jan' },
+    { value: '02', label: 'Fev' },
+    { value: '03', label: 'Mar' },
+    { value: '04', label: 'Abr' },
+    { value: '05', label: 'Mai' },
+    { value: '06', label: 'Jun' },
+    { value: '07', label: 'Jul' },
+    { value: '08', label: 'Ago' },
+    { value: '09', label: 'Set' },
+    { value: '10', label: 'Out' },
+    { value: '11', label: 'Nov' },
+    { value: '12', label: 'Dez' },
+  ];
 
   const handleCopyAddress = () => {
     const fullAddr = `${RESTAURANT_INFO.address}, ${RESTAURANT_INFO.city}, CEP ${RESTAURANT_INFO.cep}`;
@@ -24,8 +40,11 @@ export const LocationSection: React.FC<LocationSectionProps> = ({ onOpenReservat
 
   const handleQuickSubmit = (e: React.FormEvent) => {
     e.preventDefault();
+    const nomeMes = meses.find((m) => m.value === quickForm.mes)?.label || quickForm.mes;
+    const dataFormatada = `${quickForm.dia} de ${nomeMes}`;
+
     const text = encodeURIComponent(
-      `Olá! Gostaria de reservar uma mesa no Restaurante e Buteco Maria Bonita:\n- Nome: ${quickForm.nome || 'Cliente'}\n- Data: ${quickForm.data || 'Hoje/Próximo'}\n- Horário: ${quickForm.horario}\n- Pessoas: ${quickForm.pessoas}\nPor favor, confirmem a disponibilidade.`
+      `Olá! Gostaria de reservar uma mesa no Restaurante e Buteco Maria Bonita:\n- Nome: ${quickForm.nome || 'Cliente'}\n- Data: ${dataFormatada}\n- Horário: ${quickForm.horario}\n- Pessoas: ${quickForm.pessoas}\nPor favor, confirmem a disponibilidade.`
     );
     window.open(`https://wa.me/${RESTAURANT_INFO.phoneRaw}?text=${text}`, '_blank');
   };
@@ -170,35 +189,62 @@ export const LocationSection: React.FC<LocationSectionProps> = ({ onOpenReservat
                 </div>
               </div>
 
-              <div className="grid grid-cols-1 sm:grid-cols-2 gap-4 text-sm">
-                <div className="p-4 rounded-xl bg-white/[0.03] border border-white/5">
-                  <span className="text-xs text-zinc-400 font-medium block mb-1">
-                    ☀️ Almoço & Self-Service
-                  </span>
-                  <div className="font-semibold text-white font-montserrat">
-                    {RESTAURANT_INFO.lunchHours}
-                  </div>
-                  <span className="text-[11px] text-[#D4AF37] mt-1 block">
-                    Buffet quente, saladas & grelhados
-                  </span>
-                </div>
-
-                <div className="p-4 rounded-xl bg-white/[0.03] border border-white/5">
-                  <span className="text-xs text-zinc-400 font-medium block mb-1">
-                    🌙 Buteco, Pizzas & Jantar
-                  </span>
-                  <div className="font-semibold text-white font-montserrat">
-                    {RESTAURANT_INFO.dinnerHours}
-                  </div>
-                  <span className="text-[11px] text-[#D4AF37] mt-1 block">
-                    Drinks, petiscos e música ao vivo
-                  </span>
-                </div>
+              <div className="space-y-2 mb-4">
+                {RESTAURANT_INFO.schedule.map((item, idx) => {
+                  const isClosed = item.hours === "Fechado";
+                  const isExtended = item.hours.includes("23:30");
+                  return (
+                    <div
+                      key={idx}
+                      className={`flex items-center justify-between py-2 px-3 rounded-lg text-xs sm:text-sm border transition-colors ${
+                        isClosed
+                          ? "bg-red-950/20 border-red-900/30 text-zinc-400"
+                          : isExtended
+                          ? "bg-[#D4AF37]/10 border-[#D4AF37]/30 text-[#FDFBF7]"
+                          : "bg-white/[0.03] border-white/5 text-zinc-300"
+                      }`}
+                    >
+                      <div className="flex items-center space-x-2">
+                        <span className="font-medium text-white">{item.day}</span>
+                        <span
+                          className={`text-[10px] px-1.5 py-0.5 rounded font-semibold uppercase tracking-wider ${
+                            isClosed
+                              ? "bg-red-500/20 text-red-400 border border-red-500/30"
+                              : isExtended
+                              ? "bg-[#D4AF37]/20 text-[#D4AF37] border border-[#D4AF37]/40"
+                              : "bg-white/10 text-zinc-300"
+                          }`}
+                        >
+                          {item.status}
+                        </span>
+                      </div>
+                      <div className="font-semibold font-montserrat tracking-wide">
+                        {isClosed ? (
+                          <span className="text-red-400 font-bold">Fechado</span>
+                        ) : (
+                          <span className={isExtended ? "text-[#D4AF37]" : "text-white"}>
+                            {item.hours}
+                          </span>
+                        )}
+                      </div>
+                    </div>
+                  );
+                })}
               </div>
 
-              <div className="mt-4 pt-3 border-t border-white/5 flex items-center justify-between text-xs text-zinc-400">
-                <span>Funcionamento: <strong>{RESTAURANT_INFO.operatingDays}</strong></span>
-                <span className="text-zinc-500">Segunda: descanso da equipe</span>
+              <div className="p-3 rounded-xl bg-white/[0.02] border border-white/5 text-xs text-zinc-400 space-y-1">
+                <div className="flex items-center justify-between">
+                  <span>⏰ <strong>Segunda, Quarta, Quinta e Sexta:</strong></span>
+                  <span className="text-white font-medium">11:00 às 14:00 (Almoço)</span>
+                </div>
+                <div className="flex items-center justify-between text-[#D4AF37]">
+                  <span>🎉 <strong>Sábado e Domingo:</strong></span>
+                  <span className="font-medium">Até 23:30 (Almoço, Tarde & Buteco Noturno)</span>
+                </div>
+                <div className="flex items-center justify-between text-red-400/90 pt-1 border-t border-white/5">
+                  <span>🚫 <strong>Terça-feira:</strong></span>
+                  <span className="font-bold">Fechado</span>
+                </div>
               </div>
             </div>
           </div>
@@ -238,15 +284,38 @@ export const LocationSection: React.FC<LocationSectionProps> = ({ onOpenReservat
                 <div>
                   <label className="block text-xs font-semibold uppercase tracking-wider text-zinc-300 mb-1.5 flex items-center space-x-1">
                     <Calendar className="w-3 h-3 text-[#D4AF37]" />
-                    <span>Data</span>
+                    <span>Data (Dia/Mês)</span>
                   </label>
-                  <input
-                    type="date"
-                    required
-                    value={quickForm.data}
-                    onChange={(e) => setQuickForm({ ...quickForm, data: e.target.value })}
-                    className="w-full px-3 py-3 rounded-lg bg-[#0F0F0F] border border-white/15 text-white text-sm focus:outline-none focus:border-[#D4AF37] transition-colors"
-                  />
+                  <div className="grid grid-cols-2 gap-1.5">
+                    <select
+                      value={quickForm.dia}
+                      onChange={(e) => setQuickForm({ ...quickForm, dia: e.target.value })}
+                      className="w-full px-2 py-3 rounded-lg bg-[#0F0F0F] border border-white/15 text-white text-xs sm:text-sm focus:outline-none focus:border-[#D4AF37] transition-colors"
+                      aria-label="Dia"
+                    >
+                      {Array.from({ length: 31 }, (_, i) => {
+                        const d = String(i + 1).padStart(2, '0');
+                        return (
+                          <option key={d} value={d}>
+                            {d}
+                          </option>
+                        );
+                      })}
+                    </select>
+
+                    <select
+                      value={quickForm.mes}
+                      onChange={(e) => setQuickForm({ ...quickForm, mes: e.target.value })}
+                      className="w-full px-2 py-3 rounded-lg bg-[#0F0F0F] border border-white/15 text-white text-xs sm:text-sm focus:outline-none focus:border-[#D4AF37] transition-colors"
+                      aria-label="Mês"
+                    >
+                      {meses.map((m) => (
+                        <option key={m.value} value={m.value}>
+                          {m.label}
+                        </option>
+                      ))}
+                    </select>
+                  </div>
                 </div>
 
                 <div>
@@ -259,12 +328,20 @@ export const LocationSection: React.FC<LocationSectionProps> = ({ onOpenReservat
                     onChange={(e) => setQuickForm({ ...quickForm, horario: e.target.value })}
                     className="w-full px-3 py-3 rounded-lg bg-[#0F0F0F] border border-white/15 text-white text-sm focus:outline-none focus:border-[#D4AF37] transition-colors"
                   >
-                    <option value="12:00">12:00 (Almoço)</option>
-                    <option value="13:00">13:00 (Almoço)</option>
-                    <option value="19:00">19:00 (Noite)</option>
-                    <option value="20:00">20:00 (Noite)</option>
-                    <option value="21:00">21:00 (Noite)</option>
-                    <option value="22:00">22:00 (Noite)</option>
+                    <optgroup label="Almoço Diurno (Até 14h)">
+                      <option value="11:30">11:30 (Almoço)</option>
+                      <option value="12:00">12:00 (Almoço)</option>
+                      <option value="12:30">12:30 (Almoço)</option>
+                      <option value="13:00">13:00 (Almoço)</option>
+                      <option value="13:30">13:30 (Almoço)</option>
+                    </optgroup>
+                    <optgroup label="Fim de Semana (Sáb/Dom até 23:30)">
+                      <option value="18:30">18:30 (Sáb/Dom)</option>
+                      <option value="19:30">19:30 (Sáb/Dom)</option>
+                      <option value="20:30">20:30 (Sáb/Dom)</option>
+                      <option value="21:30">21:30 (Sáb/Dom)</option>
+                      <option value="22:30">22:30 (Sáb/Dom)</option>
+                    </optgroup>
                   </select>
                 </div>
               </div>

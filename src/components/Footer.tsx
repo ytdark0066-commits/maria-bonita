@@ -44,7 +44,7 @@ export const Footer: React.FC = () => {
                 <Facebook className="w-4 h-4" />
               </a>
               <a
-                href={`https://wa.me/${RESTAURANT_INFO.phoneRaw}`}
+                href={RESTAURANT_INFO.whatsappUrl}
                 target="_blank"
                 rel="noopener noreferrer"
                 className="w-9 h-9 rounded-full bg-white/5 border border-white/10 flex items-center justify-center text-zinc-300 hover:text-[#25D366] hover:border-[#25D366] transition-colors"
@@ -80,7 +80,7 @@ export const Footer: React.FC = () => {
                 <a href="#cardapio" className="hover:text-white transition-colors">Destaques do Menu</a>
               </li>
               <li>
-                <a href="#avaliacoes" className="hover:text-white transition-colors">Google Reviews (4.9 ★)</a>
+                <a href="#avaliacoes" className="hover:text-white transition-colors">Google Reviews (4.4 ★)</a>
               </li>
               <li>
                 <a href="#localizacao" className="hover:text-white transition-colors">Localização & Contato</a>
@@ -91,19 +91,19 @@ export const Footer: React.FC = () => {
           {/* Horários */}
           <div className="space-y-3">
             <h4 className="font-playfair text-sm font-bold uppercase tracking-widest text-[#D4AF37]">
-              Horários
+              Horários de Funcionamento
             </h4>
-            <div className="text-sm text-zinc-400 space-y-2">
+            <div className="text-xs sm:text-sm text-zinc-400 space-y-2">
               <div>
-                <span className="block text-white font-medium">Almoço Diurno</span>
-                <span>Terça a Domingo: 11h às 15h</span>
+                <span className="block text-white font-medium">Seg, Qua, Qui e Sex</span>
+                <span>11:00 às 14:00 (Almoço)</span>
               </div>
               <div>
-                <span className="block text-white font-medium">Buteco & Noite</span>
-                <span>Terça a Domingo: 18h às 23:30</span>
+                <span className="block text-[#D4AF37] font-medium">Sábado e Domingo</span>
+                <span>Sáb: 11:00 às 23:30 • Dom: 10:00 às 23:30</span>
               </div>
-              <div className="text-xs text-zinc-500 pt-1">
-                Segunda-feira fechado
+              <div className="text-xs text-red-400 font-medium pt-1 border-t border-white/10">
+                Terça-feira: Fechado
               </div>
             </div>
           </div>

@@ -150,7 +150,7 @@ export const Hero: React.FC<HeroProps> = ({ onOpenReservation }) => {
           <div className="w-1 h-1 rounded-full bg-[#C04000]"></div>
           <div className="flex items-center text-amber-300 text-xs">
             <Star className="w-3 h-3 fill-amber-400 text-amber-400 inline mr-1" />
-            <span className="font-semibold">4.9</span>
+            <span className="font-semibold">4.4</span>
           </div>
         </div>
 
@@ -249,7 +249,7 @@ export const Hero: React.FC<HeroProps> = ({ onOpenReservation }) => {
             <div>
               <div className="text-xs text-zinc-400 font-medium">Google Reviews</div>
               <div className="text-sm font-semibold text-[#FDFBF7] font-montserrat">
-                4.9 ★ (+250 notas)
+                4.4 ★ (+180 notas)
               </div>
             </div>
           </div>

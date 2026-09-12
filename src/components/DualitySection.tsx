@@ -120,7 +120,7 @@ export const DualitySection: React.FC<DualitySectionProps> = ({ onOpenReservatio
               {/* Day Time Badge */}
               <div className="absolute top-5 left-5 inline-flex items-center space-x-2 px-3.5 py-1.5 rounded-full bg-white/95 backdrop-blur-md text-[#C04000] text-xs font-semibold tracking-wider shadow-md">
                 <Sun className="w-3.5 h-3.5 text-amber-500" />
-                <span>11:00 às 15:00 • Almoço Diurno</span>
+                <span>A partir das 10h/11h • Almoço & Self-Service</span>
               </div>
 
               <div className="absolute bottom-5 left-5 right-5 text-white">
@@ -193,7 +193,7 @@ export const DualitySection: React.FC<DualitySectionProps> = ({ onOpenReservatio
               {/* Night Time Badge */}
               <div className="absolute top-5 left-5 inline-flex items-center space-x-2 px-3.5 py-1.5 rounded-full bg-[#0F0F0F]/90 backdrop-blur-md border border-[#D4AF37]/40 text-[#D4AF37] text-xs font-semibold tracking-wider shadow-md">
                 <Moon className="w-3.5 h-3.5 text-[#D4AF37]" />
-                <span>18:00 às 23:30 • Buteco & Bar</span>
+                <span>Sáb e Dom até 23:30 • Buteco & Bar</span>
               </div>
 
               <div className="absolute bottom-5 left-5 right-5 text-[#FDFBF7]">

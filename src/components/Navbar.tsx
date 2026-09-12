@@ -148,7 +148,7 @@ export const Navbar: React.FC<NavbarProps> = ({ onOpenReservation }) => {
               onClick={() => setMobileMenuOpen(false)}
               className="text-[#FDFBF7] hover:text-[#D4AF37] py-2 border-b border-white/5"
             >
-              Google Reviews (4.9 ★)
+              Google Reviews (4.4 ★)
             </a>
             <a
               href="#localizacao"

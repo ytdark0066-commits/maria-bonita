@@ -11,7 +11,8 @@ export const ReservationModal: React.FC<ReservationModalProps> = ({ isOpen, onCl
   const [formData, setFormData] = useState({
     nome: '',
     telefone: '',
-    data: '',
+    dia: String(new Date().getDate()).padStart(2, '0'),
+    mes: '09',
     horario: '19:30',
     pessoas: '2',
     ocasiao: 'Jantar Casual',
@@ -20,14 +21,32 @@ export const ReservationModal: React.FC<ReservationModalProps> = ({ isOpen, onCl
 
   if (!isOpen) return null;
 
+  const meses = [
+    { value: '01', label: 'Janeiro' },
+    { value: '02', label: 'Fevereiro' },
+    { value: '03', label: 'Março' },
+    { value: '04', label: 'Abril' },
+    { value: '05', label: 'Maio' },
+    { value: '06', label: 'Junho' },
+    { value: '07', label: 'Julho' },
+    { value: '08', label: 'Agosto' },
+    { value: '09', label: 'Setembro' },
+    { value: '10', label: 'Outubro' },
+    { value: '11', label: 'Novembro' },
+    { value: '12', label: 'Dezembro' },
+  ];
+
   const handleSubmit = (e: React.FormEvent) => {
     e.preventDefault();
+    const nomeMes = meses.find((m) => m.value === formData.mes)?.label || formData.mes;
+    const dataFormatada = `${formData.dia} de ${nomeMes}`;
+
     const message = `*SOLICITAÇÃO DE RESERVA - MARIA BONITA*
 📍 Alagoinha - PE
 
 👤 *Nome:* ${formData.nome}
 📱 *Contato:* ${formData.telefone}
-📅 *Data:* ${formData.data || 'Hoje/Próximo'}
+📅 *Data:* ${dataFormatada}
 ⏰ *Horário:* ${formData.horario}
 👥 *Pessoas:* ${formData.pessoas}
 🥂 *Ocasião:* ${formData.ocasiao}
@@ -89,15 +108,38 @@ Por gentileza, confirmem a disponibilidade da mesa!`;
             <div>
               <label className="block text-xs font-semibold uppercase tracking-wider text-zinc-300 mb-1 flex items-center space-x-1">
                 <Calendar className="w-3.5 h-3.5 text-[#D4AF37]" />
-                <span>Data *</span>
+                <span>Data (Dia e Mês) *</span>
               </label>
-              <input
-                type="date"
-                required
-                value={formData.data}
-                onChange={(e) => setFormData({ ...formData, data: e.target.value })}
-                className="w-full px-3 py-2.5 rounded-lg bg-[#0F0F0F] border border-white/15 text-white focus:outline-none focus:border-[#D4AF37] transition-colors"
-              />
+              <div className="grid grid-cols-2 gap-2">
+                <select
+                  value={formData.dia}
+                  onChange={(e) => setFormData({ ...formData, dia: e.target.value })}
+                  className="w-full px-2.5 py-2.5 rounded-lg bg-[#0F0F0F] border border-white/15 text-white text-xs sm:text-sm focus:outline-none focus:border-[#D4AF37] transition-colors"
+                  aria-label="Dia da reserva"
+                >
+                  {Array.from({ length: 31 }, (_, i) => {
+                    const d = String(i + 1).padStart(2, '0');
+                    return (
+                      <option key={d} value={d}>
+                        Dia {d}
+                      </option>
+                    );
+                  })}
+                </select>
+
+                <select
+                  value={formData.mes}
+                  onChange={(e) => setFormData({ ...formData, mes: e.target.value })}
+                  className="w-full px-2 py-2.5 rounded-lg bg-[#0F0F0F] border border-white/15 text-white text-xs sm:text-sm focus:outline-none focus:border-[#D4AF37] transition-colors"
+                  aria-label="Mês da reserva"
+                >
+                  {meses.map((m) => (
+                    <option key={m.value} value={m.value}>
+                      {m.label}
+                    </option>
+                  ))}
+                </select>
+              </div>
             </div>
 
             <div>
@@ -110,21 +152,22 @@ Por gentileza, confirmem a disponibilidade da mesa!`;
                 onChange={(e) => setFormData({ ...formData, horario: e.target.value })}
                 className="w-full px-3 py-2.5 rounded-lg bg-[#0F0F0F] border border-white/15 text-white focus:outline-none focus:border-[#D4AF37] transition-colors"
               >
-                <optgroup label="Almoço Diurno (11h - 15h)">
-                  <option value="11:30">11:30</option>
-                  <option value="12:00">12:00</option>
-                  <option value="12:30">12:30</option>
-                  <option value="13:00">13:00</option>
-                  <option value="13:30">13:30</option>
+                <optgroup label="Almoço Diurno (11:00 às 14:00)">
+                  <option value="11:30">11:30 (Almoço)</option>
+                  <option value="12:00">12:00 (Almoço)</option>
+                  <option value="12:30">12:30 (Almoço)</option>
+                  <option value="13:00">13:00 (Almoço)</option>
+                  <option value="13:30">13:30 (Almoço)</option>
                 </optgroup>
-                <optgroup label="Buteco Noturno (18h - 23:30)">
-                  <option value="18:30">18:30</option>
-                  <option value="19:00">19:00</option>
-                  <option value="19:30">19:30</option>
-                  <option value="20:00">20:00</option>
-                  <option value="20:30">20:30</option>
-                  <option value="21:00">21:00</option>
-                  <option value="21:30">21:30</option>
+                <optgroup label="Fim de Semana (Sáb/Dom até 23:30)">
+                  <option value="18:30">18:30 (Sáb/Dom)</option>
+                  <option value="19:00">19:00 (Sáb/Dom)</option>
+                  <option value="19:30">19:30 (Sáb/Dom)</option>
+                  <option value="20:00">20:00 (Sáb/Dom)</option>
+                  <option value="20:30">20:30 (Sáb/Dom)</option>
+                  <option value="21:00">21:00 (Sáb/Dom)</option>
+                  <option value="21:30">21:30 (Sáb/Dom)</option>
+                  <option value="22:00">22:00 (Sáb/Dom)</option>
                 </optgroup>
               </select>
             </div>
@@ -179,6 +222,13 @@ Por gentileza, confirmem a disponibilidade da mesa!`;
               onChange={(e) => setFormData({ ...formData, observacoes: e.target.value })}
               className="w-full px-4 py-2 rounded-lg bg-[#0F0F0F] border border-white/15 text-white placeholder-zinc-500 focus:outline-none focus:border-[#D4AF37] transition-colors"
             />
+          </div>
+
+          <div className="p-3 rounded-lg bg-white/[0.03] border border-white/10 text-xs text-zinc-300">
+            <p>
+              📅 <strong>Horários:</strong> Seg, Qua, Qui e Sex das 11:00 às 14:00 (Almoço). Sáb (11:00 às 23:30) e Dom (10:00 às 23:30). 
+              <span className="text-red-400 font-semibold block mt-0.5">Terça-feira: Fechado.</span>
+            </p>
           </div>
 
           <div className="pt-2">

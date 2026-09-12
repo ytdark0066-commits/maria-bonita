@@ -100,7 +100,12 @@ export const MenuBento: React.FC<MenuBentoProps> = ({ onOpenReservation }) => {
                 <img
                   src={item.image}
                   alt={item.title}
+                  referrerPolicy="no-referrer"
                   className="w-full h-full object-cover object-center group-hover:scale-110 transition-transform duration-700 filter brightness-[0.45] contrast-110 group-hover:brightness-[0.55]"
+                  onError={(e) => {
+                    // Fallback to a solid high quality food/drink image if anything fails
+                    e.currentTarget.src = 'https://images.unsplash.com/photo-1514362545857-3bc16c4c7d1b?auto=format&fit=crop&w=900&q=80';
+                  }}
                 />
                 <div className="absolute inset-0 bg-gradient-to-t from-[#0F0F0F] via-[#0F0F0F]/60 to-transparent"></div>
               </div>
