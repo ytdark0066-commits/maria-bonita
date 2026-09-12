@@ -15,9 +15,9 @@ export const Footer: React.FC = () => {
           <div className="lg:col-span-2 space-y-4">
             <div className="flex items-center space-x-3">
               <div className="w-10 h-10 rounded-full border border-[#D4AF37] bg-[#C04000]/20 flex items-center justify-center text-[#D4AF37]">
-                <span className="font-playfair text-xl font-bold italic">MB</span>
+                <span className="font-cormorant text-2xl font-bold italic">MB</span>
               </div>
-              <span className="font-playfair text-2xl font-bold text-white tracking-tight">
+              <span className="font-cormorant text-3xl font-bold text-white tracking-tight">
                 Maria Bonita
               </span>
             </div>

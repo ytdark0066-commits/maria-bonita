@@ -157,10 +157,10 @@ export const Hero: React.FC<HeroProps> = ({ onOpenReservation }) => {
         {/* Title with GSAP TextReveal effect */}
         <h1
           ref={titleRef}
-          className="font-playfair text-[#FDFBF7] font-bold tracking-tight text-[clamp(2.3rem,6.5vw,5rem)] leading-[1.1] max-w-4xl drop-shadow-2xl perspective-1000 mb-6"
+          className="font-cormorant text-[#FDFBF7] font-semibold tracking-normal text-[clamp(2.5rem,7vw,5.4rem)] leading-[1.08] max-w-4xl drop-shadow-2xl perspective-1000 mb-6"
         >
           {headlinePhrase.split(" ").map((word, wordIndex) => (
-            <span key={wordIndex} className="inline-block whitespace-nowrap mr-[0.28em]">
+            <span key={wordIndex} className="inline-block whitespace-nowrap mr-[0.25em]">
               {word.split("").map((char, charIndex) => (
                 <span
                   key={charIndex}
@@ -194,7 +194,7 @@ export const Hero: React.FC<HeroProps> = ({ onOpenReservation }) => {
             ref={magneticButtonRef}
             id="hero-cta-whatsapp"
             onClick={onOpenReservation}
-            className="w-full sm:w-auto relative group inline-flex items-center justify-center px-8 py-4 text-sm sm:text-base font-semibold tracking-wider uppercase text-[#FDFBF7] bg-[#C04000] hover:bg-[#A63700] rounded-sm transition-all duration-300 shadow-[0_0_35px_rgba(192,64,0,0.45)] border border-[#D4AF37]/50 overflow-hidden cursor-pointer"
+            className="w-full sm:w-auto relative group inline-flex items-center justify-center px-9 py-4 text-sm sm:text-base font-semibold tracking-wider uppercase text-[#FDFBF7] bg-[#C04000] hover:bg-[#A63700] rounded-full transition-all duration-300 shadow-[0_0_35px_rgba(192,64,0,0.45)] border border-[#D4AF37]/50 overflow-hidden cursor-pointer active:scale-95"
           >
             {/* Shimmer sweep effect */}
             <span className="absolute inset-0 -translate-x-full group-hover:translate-x-full transition-transform duration-1000 bg-gradient-to-r from-transparent via-white/20 to-transparent"></span>
@@ -207,7 +207,7 @@ export const Hero: React.FC<HeroProps> = ({ onOpenReservation }) => {
           <a
             href="#cardapio"
             id="hero-explore-menu-btn"
-            className="w-full sm:w-auto inline-flex items-center justify-center px-7 py-4 text-sm sm:text-base font-medium tracking-wide text-[#FDFBF7] hover:text-[#D4AF37] bg-white/5 hover:bg-white/10 rounded-sm border border-white/15 hover:border-[#D4AF37]/50 backdrop-blur-sm transition-all duration-300"
+            className="w-full sm:w-auto inline-flex items-center justify-center px-8 py-4 text-sm sm:text-base font-medium tracking-wide text-[#FDFBF7] hover:text-[#D4AF37] bg-white/5 hover:bg-white/10 rounded-full border border-white/15 hover:border-[#D4AF37]/50 backdrop-blur-sm transition-all duration-300"
           >
             <span>Explorar Cardápio</span>
           </a>

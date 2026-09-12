@@ -234,7 +234,7 @@ Por gentileza, confirmem a disponibilidade da mesa!`;
           <div className="pt-2">
             <button
               type="submit"
-              className="w-full py-3.5 bg-[#C04000] hover:bg-[#A63700] text-white font-semibold text-xs uppercase tracking-widest rounded-sm border border-[#D4AF37]/50 shadow-[0_0_20px_rgba(192,64,0,0.4)] transition-all flex items-center justify-center space-x-2 cursor-pointer active:scale-95"
+              className="w-full py-3.5 bg-[#C04000] hover:bg-[#A63700] text-white font-semibold text-xs uppercase tracking-widest rounded-full border border-[#D4AF37]/50 shadow-[0_0_20px_rgba(192,64,0,0.4)] transition-all flex items-center justify-center space-x-2 cursor-pointer active:scale-95"
             >
               <Send className="w-4 h-4" />
               <span>Confirmar no WhatsApp Oficial</span>

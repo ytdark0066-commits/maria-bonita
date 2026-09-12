@@ -114,7 +114,7 @@ export const LocationSection: React.FC<LocationSectionProps> = ({ onOpenReservat
                     href={RESTAURANT_INFO.googleMapsUrl}
                     target="_blank"
                     rel="noopener noreferrer"
-                    className="inline-flex items-center space-x-2 px-4 py-2.5 rounded-lg bg-[#C04000] hover:bg-[#A63700] text-white text-xs font-semibold uppercase tracking-wider shadow-lg transition-colors border border-[#D4AF37]/30"
+                    className="inline-flex items-center space-x-2 px-5 py-2.5 rounded-full bg-[#C04000] hover:bg-[#A63700] text-white text-xs font-semibold uppercase tracking-wider shadow-lg transition-colors border border-[#D4AF37]/30"
                   >
                     <Navigation className="w-3.5 h-3.5" />
                     <span>Traçar Rota no Maps</span>
@@ -145,7 +145,7 @@ export const LocationSection: React.FC<LocationSectionProps> = ({ onOpenReservat
                     href={RESTAURANT_INFO.googleMapsUrl}
                     target="_blank"
                     rel="noopener noreferrer"
-                    className="inline-flex items-center justify-center space-x-2 px-4 py-2.5 rounded-lg bg-[#C04000] hover:bg-[#A63700] text-xs font-semibold uppercase tracking-wider text-white border border-[#D4AF37]/40 shadow-md transition-colors"
+                    className="inline-flex items-center justify-center space-x-2 px-5 py-2.5 rounded-full bg-[#C04000] hover:bg-[#A63700] text-xs font-semibold uppercase tracking-wider text-white border border-[#D4AF37]/40 shadow-md transition-colors"
                   >
                     <ExternalLink className="w-4 h-4" />
                     <span>Abrir Perfil no Maps</span>
@@ -154,7 +154,7 @@ export const LocationSection: React.FC<LocationSectionProps> = ({ onOpenReservat
                   <button
                     id="copy-address-btn"
                     onClick={handleCopyAddress}
-                    className="inline-flex items-center justify-center space-x-2 px-4 py-2.5 rounded-lg bg-white/5 hover:bg-white/10 text-xs font-semibold uppercase tracking-wider text-zinc-200 border border-white/10 transition-colors cursor-pointer"
+                    className="inline-flex items-center justify-center space-x-2 px-5 py-2.5 rounded-full bg-white/5 hover:bg-white/10 text-xs font-semibold uppercase tracking-wider text-zinc-200 border border-white/10 transition-colors cursor-pointer"
                   >
                     {copied ? (
                       <>
@@ -342,7 +342,7 @@ export const LocationSection: React.FC<LocationSectionProps> = ({ onOpenReservat
               <div className="pt-2">
                 <button
                   type="submit"
-                  className="w-full py-4 bg-[#C04000] hover:bg-[#A63700] text-white font-semibold text-xs uppercase tracking-widest rounded-sm border border-[#D4AF37]/50 shadow-[0_0_25px_rgba(192,64,0,0.4)] transition-all flex items-center justify-center space-x-2.5 cursor-pointer active:scale-95"
+                  className="w-full py-4 bg-[#C04000] hover:bg-[#A63700] text-white font-semibold text-xs uppercase tracking-widest rounded-full border border-[#D4AF37]/50 shadow-[0_0_25px_rgba(192,64,0,0.4)] transition-all flex items-center justify-center space-x-2.5 cursor-pointer active:scale-95"
                 >
                   <Send className="w-4 h-4" />
                   <span>Enviar Reserva via WhatsApp</span>

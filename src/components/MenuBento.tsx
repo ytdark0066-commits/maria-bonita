@@ -209,7 +209,7 @@ export const MenuBento: React.FC<MenuBentoProps> = ({ onOpenReservation }) => {
             <div className="flex flex-col sm:flex-row items-center justify-center gap-4">
               <button
                 onClick={() => setShowFullMenuModal(true)}
-                className="w-full sm:w-auto inline-flex items-center justify-center px-6 py-3.5 bg-[#C04000] hover:bg-[#A63700] text-[#FDFBF7] text-xs font-semibold tracking-wider uppercase rounded-sm border border-[#D4AF37]/50 shadow-lg transition-all"
+                className="w-full sm:w-auto inline-flex items-center justify-center px-7 py-3.5 bg-[#C04000] hover:bg-[#A63700] text-[#FDFBF7] text-xs font-semibold tracking-wider uppercase rounded-full border border-[#D4AF37]/50 shadow-lg transition-all"
               >
                 <Utensils className="w-4 h-4 mr-2" />
                 <span>Ver Todos os Pratos & Valores</span>
@@ -217,7 +217,7 @@ export const MenuBento: React.FC<MenuBentoProps> = ({ onOpenReservation }) => {
 
               <button
                 onClick={onOpenReservation}
-                className="w-full sm:w-auto inline-flex items-center justify-center px-6 py-3.5 bg-white/5 hover:bg-white/10 text-[#D4AF37] text-xs font-semibold tracking-wider uppercase rounded-sm border border-[#D4AF37]/30 transition-all"
+                className="w-full sm:w-auto inline-flex items-center justify-center px-7 py-3.5 bg-white/5 hover:bg-white/10 text-[#D4AF37] text-xs font-semibold tracking-wider uppercase rounded-full border border-[#D4AF37]/30 transition-all"
               >
                 <span>Fazer Pedido ou Reservar</span>
               </button>
@@ -269,13 +269,13 @@ export const MenuBento: React.FC<MenuBentoProps> = ({ onOpenReservation }) => {
                     setSelectedMenuItem(null);
                     onOpenReservation();
                   }}
-                  className="flex-1 py-3 text-center bg-[#C04000] hover:bg-[#A63700] text-white font-semibold text-xs uppercase tracking-wider rounded-sm transition-all shadow-md"
+                  className="flex-1 py-3 text-center bg-[#C04000] hover:bg-[#A63700] text-white font-semibold text-xs uppercase tracking-wider rounded-full transition-all shadow-md cursor-pointer"
                 >
                   Pedir no WhatsApp
                 </button>
                 <button
                   onClick={() => setSelectedMenuItem(null)}
-                  className="px-5 py-3 border border-white/20 text-zinc-300 hover:text-white rounded-sm text-xs font-semibold uppercase tracking-wider transition-colors"
+                  className="px-6 py-3 border border-white/20 text-zinc-300 hover:text-white rounded-full text-xs font-semibold uppercase tracking-wider transition-colors cursor-pointer"
                 >
                   Fechar
                 </button>
@@ -350,7 +350,7 @@ export const MenuBento: React.FC<MenuBentoProps> = ({ onOpenReservation }) => {
                   setShowFullMenuModal(false);
                   onOpenReservation();
                 }}
-                className="w-full sm:w-auto px-6 py-3 bg-[#C04000] text-white text-xs font-semibold uppercase tracking-wider rounded-sm shadow-lg hover:bg-[#a63700]"
+                className="w-full sm:w-auto px-7 py-3.5 bg-[#C04000] text-white text-xs font-semibold uppercase tracking-wider rounded-full shadow-lg hover:bg-[#a63700] cursor-pointer"
               >
                 Consultar Prato do Dia via WhatsApp
               </button>
