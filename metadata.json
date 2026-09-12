@@ -1,0 +1,6 @@
+{
+  "name": "Restaurante e Buteco Maria Bonita",
+  "description": "Obra de arte digital e landing page oficial do Restaurante e Buteco Maria Bonita em Alagoinha - PE. Experiência neo-sertaneja, buffet self-service premium diurno e buteco vibrante noturno.",
+  "requestFramePermissions": [],
+  "majorCapabilities": ["MAJOR_CAPABILITY_SERVER_SIDE_GEMINI_API"]
+}
