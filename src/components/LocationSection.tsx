@@ -189,61 +189,36 @@ export const LocationSection: React.FC<LocationSectionProps> = ({ onOpenReservat
                 </div>
               </div>
 
-              <div className="space-y-2 mb-4">
-                {RESTAURANT_INFO.schedule.map((item, idx) => {
-                  const isClosed = item.hours === "Fechado";
-                  const isExtended = item.hours.includes("23:30");
-                  return (
-                    <div
-                      key={idx}
-                      className={`flex items-center justify-between py-2 px-3 rounded-lg text-xs sm:text-sm border transition-colors ${
-                        isClosed
-                          ? "bg-red-950/20 border-red-900/30 text-zinc-400"
-                          : isExtended
-                          ? "bg-[#D4AF37]/10 border-[#D4AF37]/30 text-[#FDFBF7]"
-                          : "bg-white/[0.03] border-white/5 text-zinc-300"
-                      }`}
-                    >
-                      <div className="flex items-center space-x-2">
-                        <span className="font-medium text-white">{item.day}</span>
-                        <span
-                          className={`text-[10px] px-1.5 py-0.5 rounded font-semibold uppercase tracking-wider ${
-                            isClosed
-                              ? "bg-red-500/20 text-red-400 border border-red-500/30"
-                              : isExtended
-                              ? "bg-[#D4AF37]/20 text-[#D4AF37] border border-[#D4AF37]/40"
-                              : "bg-white/10 text-zinc-300"
-                          }`}
-                        >
-                          {item.status}
-                        </span>
-                      </div>
-                      <div className="font-semibold font-montserrat tracking-wide">
-                        {isClosed ? (
-                          <span className="text-red-400 font-bold">Fechado</span>
-                        ) : (
-                          <span className={isExtended ? "text-[#D4AF37]" : "text-white"}>
-                            {item.hours}
-                          </span>
-                        )}
-                      </div>
-                    </div>
-                  );
-                })}
-              </div>
+              {/* Resumo Direto e Limpo de Horários */}
+              <div className="p-4 sm:p-5 rounded-xl bg-white/[0.03] border border-white/10 text-sm text-zinc-300 space-y-3">
+                <div className="flex flex-col sm:flex-row sm:items-center justify-between pb-2.5 border-b border-white/5 gap-1">
+                  <span className="font-medium text-white flex items-center space-x-2">
+                    <span className="w-1.5 h-1.5 rounded-full bg-[#D4AF37]"></span>
+                    <span>Segunda, Quarta, Quinta e Sexta</span>
+                  </span>
+                  <span className="text-[#D4AF37] font-semibold font-montserrat">
+                    11:00 às 14:00 <span className="text-xs text-zinc-400 font-normal">(Almoço)</span>
+                  </span>
+                </div>
 
-              <div className="p-3 rounded-xl bg-white/[0.02] border border-white/5 text-xs text-zinc-400 space-y-1">
-                <div className="flex items-center justify-between">
-                  <span>⏰ <strong>Segunda, Quarta, Quinta e Sexta:</strong></span>
-                  <span className="text-white font-medium">11:00 às 14:00 (Almoço)</span>
+                <div className="flex flex-col sm:flex-row sm:items-center justify-between pb-2.5 border-b border-white/5 gap-1">
+                  <span className="font-medium text-white flex items-center space-x-2">
+                    <span className="w-1.5 h-1.5 rounded-full bg-emerald-400"></span>
+                    <span>Sábado e Domingo</span>
+                  </span>
+                  <span className="text-white font-semibold font-montserrat">
+                    Sáb: 11h às 23:30 • Dom: 10h às 23:30
+                  </span>
                 </div>
-                <div className="flex items-center justify-between text-[#D4AF37]">
-                  <span>🎉 <strong>Sábado e Domingo:</strong></span>
-                  <span className="font-medium">Até 23:30 (Almoço, Tarde & Buteco Noturno)</span>
-                </div>
-                <div className="flex items-center justify-between text-red-400/90 pt-1 border-t border-white/5">
-                  <span>🚫 <strong>Terça-feira:</strong></span>
-                  <span className="font-bold">Fechado</span>
+
+                <div className="flex items-center justify-between pt-0.5">
+                  <span className="font-medium text-red-400 flex items-center space-x-2">
+                    <span className="w-1.5 h-1.5 rounded-full bg-red-400"></span>
+                    <span>Terça-feira</span>
+                  </span>
+                  <span className="text-red-400 font-bold uppercase text-xs tracking-wider px-2 py-0.5 rounded bg-red-500/10 border border-red-500/20">
+                    Fechado
+                  </span>
                 </div>
               </div>
             </div>
